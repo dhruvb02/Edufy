@@ -1,0 +1,17 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment files
+.env
+
+# OS junk
+.DS_Store
+thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
