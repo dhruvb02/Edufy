@@ -8,12 +8,13 @@ const tagsSchema = new mongoose.Schema({
     },
     description: {
         typr: String,
+        required: true,
     },
-    course: {
+    course: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Course",
 
-    }
+    }]
 
 
     
