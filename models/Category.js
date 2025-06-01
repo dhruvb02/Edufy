@@ -7,7 +7,7 @@ const categorySchema = new mongoose.Schema({
         required: true,
     },
     description: {
-        typr: String,
+        type: String,
         required: true,
     },
     course: [{

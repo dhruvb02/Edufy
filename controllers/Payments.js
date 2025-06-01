@@ -4,8 +4,8 @@ const crypto = require("crypto");
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const mongoose = require("mongoose");
-const {  courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail")
-const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail")
+const  courseEnrollmentEmail = require("../mail_templates/courseEnrollment")
+const { paymentSuccessEmail } = require("../mail_templates/paymentSuccessEmail")
 const CourseProgress = require("../models/CourseProgress")
 
 
@@ -82,7 +82,7 @@ let course;
 // verify the payment
 // server mein secret and razorpay ke secret ki matching karni hai
 
-exports.verifyPayment = async (req, res) => {
+exports.verifySignature = async (req, res) => {
   const razorpay_order_id = req.body?.razorpay_order_id
   const razorpay_payment_id = req.body?.razorpay_payment_id
   const razorpay_signature = req.body?.razorpay_signature

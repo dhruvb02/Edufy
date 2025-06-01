@@ -9,7 +9,7 @@ const  jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 ///sendotp
-exports.sendOTP = async(req,res) =>{
+exports.sendotp = async(req,res) =>{
 
    try{
      //fetch email form req ki body
@@ -78,7 +78,7 @@ exports.sendOTP = async(req,res) =>{
 
 
 /// sign up
-exports.signUp = async(req,res) =>{
+exports.signup = async(req,res) =>{
    try{
      //data fetch from req ki body
         const {
