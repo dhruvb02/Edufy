@@ -83,14 +83,16 @@ exports.isInstructor = async(res,req,next) =>{
 }
 
 //isAdmin
-exports.isAdmin = async(res,req,next) =>{
+exports.isAdmin = async(req,res,next) =>{
     try{
+        console.log(req.user.accountType)
         if(req.user.accountType!== "Admin"){
             return res.status(401).json({
             success: false,
             message:"This is a proctected route for admins only"
         })
         }
+        next();
     }
     catch(error){
         return res.status(500).json({

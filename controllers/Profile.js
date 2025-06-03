@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Profile = require("../models/Profile")
 const CourseProgress = require("../models/CourseProgress")
 

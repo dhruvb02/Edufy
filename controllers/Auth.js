@@ -1,10 +1,11 @@
 const User = require("../models/User");
 const OTP = require("../models/OTP");
 const Profile = require("../models/Profile");
-
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
 const  jwt = require("jsonwebtoken");
+const mailSender = require('../utils/mailSender');
+const otpTemplate = require('../mail_templates/emailVerification')
 
 require("dotenv").config();
 
@@ -51,6 +52,18 @@ exports.sendotp = async(req,res) =>{
 
     const otpBody = await OTP.create(otpPayload);
     console.log (otpBody);
+
+    const htmlBody = otpTemplate(otp);
+    console.log("Built HTML for OTP email.");
+
+    // 7) Send the email (wait for mailSender to finish)
+    console.log("Calling mailSender() to send OTP to:", email);
+    const info = await mailSender(
+      email,
+      "Edufy OTP Verification",
+      htmlBody
+    );
+    console.log("Email sent. MessageId:", info.messageId);
 
    // return successfull response
    
